@@ -20,12 +20,18 @@ public class ExampleUnitTest {
 
 
     @Test
-    public void validateUsername(){
+    public void testValidate(){
         CreateActivity activity = new CreateActivity();
         List<String> usernames = new ArrayList<>();
         usernames.add("Test");
 
-        assertTrue(activity.validate("Yest", usernames));
-        assertFalse(activity.validate("Test", usernames));
+        // Existing usernames should be rejected
+        assertTrue(activity.validate("Yest", "password", usernames));
+        assertFalse(activity.validate("Test", "password" ,usernames));
+
+        // Empty fields should be rejected
+        assertFalse(activity.validate("Username", "", usernames));
+        assertFalse(activity.validate("", "password", usernames));
     }
+
 }

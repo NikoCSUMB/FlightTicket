@@ -37,7 +37,7 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // if validate(), add account & go to next activity
-                if(validate(usernameText.getText().toString(), usernames)){
+                if(validate(usernameText.getText().toString(), passwordText.getText().toString(), usernames)){
 
                 }
 
@@ -45,15 +45,19 @@ public class CreateActivity extends AppCompatActivity {
         });
     }
 
-    public boolean validate(String username, List<String> names){
+    public boolean validate(String username, String password, List<String> names){
         // Search db for existing username
         for (String name : names){
             if (username.equals(name)){
-                Toast.makeText(this, "That username is already taken!", Toast.LENGTH_SHORT).show();
+               Toast.makeText(this, "That username is already taken!", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
-        // TODO: Check for empty fields
+         // Check for empty fields
+        if (username.length() == 0 || password.length() == 0){
+            Toast.makeText(this, "Both fields must be filled", Toast.LENGTH_SHORT).show();
+            return false;
+        }
 
         return true;
     }
