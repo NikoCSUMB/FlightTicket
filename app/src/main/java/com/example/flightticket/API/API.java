@@ -20,6 +20,7 @@ public interface API {
 
     String BASE_URL = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/";
 
+
     @GET("browseroutes/v1.0/{country}/{currency}/{locale}/{originplace}/{destinationplace}/{outboundpartialdate}")
     Call<Flight> getFlights(
             @Path("country") String country,
@@ -29,6 +30,7 @@ public interface API {
             @Path("destinationplace") String destinationplace,
             @Path("outboundpartialdate") String outboundpartialdate
     );
+
 
     @GET("autosuggest/v1.0/{country}/{currency}/{locale}")
     Call<List<Place>> getPlaces(

@@ -26,35 +26,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        RetrofitClient retrofit = RetrofitClient.getClient();
-//        retrofit.getFlightsCall(
-//                "US",
-//                "USD",
-//                "en-US",
-//                "SFO-sky",
-//                "ORD-sky",
-//                "2021-10-18"
-//        ).enqueue(new Callback<Flight>() {
-//            @Override
-//            public void onResponse(Call<Flight> call, Response<Flight> response) {
-//                if (response.isSuccessful()) {
-//                    assert response.body() != null;
-//                    Flight flight = response.body();
-//                    System.out.println(flight);
-//                } else {
-//                    new Exception("Request failed, code: " + response.code()).printStackTrace();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Flight> call, Throwable t) {
-//                try {
-//                    throw t;
-//                } catch (Throwable throwable) {
-//                    throwable.printStackTrace();
-//                }
-//            }
-//        });
+        RetrofitClient retrofit = RetrofitClient.getClient();
+        retrofit.getFlightsCall(
+                "US",
+                "USD",
+                "en-US",
+                "SFO-sky",
+                "ORD-sky",
+                "2021-10-18"
+        ).enqueue(new Callback<Flight>() {
+            @Override
+            public void onResponse(Call<Flight> call, Response<Flight> response) {
+                if (response.isSuccessful()) {
+                    assert response.body() != null;
+                    Flight flight = response.body();
+                    System.out.println(flight);
+                } else {
+                    new Exception("Request failed, code: " + response.code()).printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Flight> call, Throwable t) {
+                try {
+                    throw t;
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+            }
+        });
 //        OkHttpClient client = new OkHttpClient();
 //
 //        Request request = new Request.Builder()
@@ -70,32 +70,33 @@ public class MainActivity extends AppCompatActivity {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        RetrofitClient retrofit = RetrofitClient.getClient();
-        retrofit.getPlacesCall(
-                "UK",
-                "GBP",
-                "en-GB",
-                "Stockholm"
-        ).enqueue(new Callback<List<Place>>() {
-            @Override
-            public void onResponse(Call<List<Place>> call, Response<List<Place>> response) {
-                if (response.isSuccessful()) {
-                    assert response.body() != null;
-                    Log.i("Body", String.valueOf(response.body()));
-                } else {
-                    new Exception("Request failed, code: " + response.code()).printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Place>> call, Throwable t) {
-                try {
-                    throw t;
-                } catch (Throwable throwable) {
-                    throwable.printStackTrace();
-                }
-            }
-        });
+//        RetrofitClient retrofit = RetrofitClient.getClient();
+//        retrofit.getPlacesCall(
+//                "UK",
+//                "GBP",
+//                "en-GB",
+//                "Stockholm"
+//        ).enqueue(new Callback<>() {
+//            @Override
+//            public void onResponse(Call<List<Place>> call, Response<List<Place>> response) {
+////                assert response.body() != null;
+//                if (response.isSuccessful()) {
+//                    Log.i("Body", String.valueOf(response.body()));
+//                } else {
+//                    Log.e("Response", response.headers().toString());
+//                    new Exception("Request failed, code: " + response.code()).printStackTrace();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Place>> call, Throwable t) {
+//                try {
+//                    throw t;
+//                } catch (Throwable throwable) {
+//                    throwable.printStackTrace();
+//                }
+//            }
+//        });
     }
 
 }

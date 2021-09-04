@@ -26,7 +26,7 @@ public class RetrofitClient {
         OkHttpClient httpClient = new OkHttpClient
                 .Builder()
                 .addInterceptor(new LoggingInterceptor())
-                .addNetworkInterceptor(new HeaderInterceptor())
+                .addInterceptor(new HeaderInterceptor())
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
