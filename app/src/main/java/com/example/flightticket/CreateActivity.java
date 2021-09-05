@@ -36,30 +36,37 @@ public class CreateActivity extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // if validate(), add account & go to next activity
-                if(validate(usernameText.getText().toString(), passwordText.getText().toString(), usernames)){
-
+                String username = usernameText.getText().toString();
+                String password = passwordText.getText().toString();
+                if (!validateUser(username, usernames)) {
+                    Toast.makeText(getApplicationContext(), "That username is already taken!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+                if (!validateEmpty(username, password)) {
+                    Toast.makeText(getApplicationContext(), "Both fields must be filled", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // insert user and return to main activity
+
 
             }
         });
     }
 
-    public boolean validate(String username, String password, List<String> names){
-        // Search db for existing username
+    // Searches the list to see if the current username already exists.
+    public boolean validateUser(String username, List<String> names){
         for (String name : names){
             if (username.equals(name)){
-               Toast.makeText(this, "That username is already taken!", Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
-         // Check for empty fields
-        if (username.length() == 0 || password.length() == 0){
-            Toast.makeText(this, "Both fields must be filled", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
         return true;
+    }
+
+//     Checks if both fields are filled
+    public boolean validateEmpty(String username, String password) {
+        return username.length() != 0 && password.length() != 0;
     }
 
 }
