@@ -2,21 +2,12 @@ package com.example.flightticket.API;
 
 import static com.example.flightticket.API.API.BASE_URL;
 
-import com.example.flightticket.DataClasses.Flight;
-import com.example.flightticket.DataClasses.Place;
+import com.example.flightticket.API.APIResponseClasses.APIResponse;
 
-import java.io.IOException;
-import java.util.List;
-
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public class RetrofitClient {
     private API api;
@@ -44,25 +35,25 @@ public class RetrofitClient {
         return retrofitClient;
     }
 
-    public Call<Flight> getFlightsCall(
+    public Call<APIResponse> getFlightsCall(
             String country,
             String currency,
             String locale,
-            String originplace,
-            String destinationplace,
-            String outboundpartialdate
+            String originPlace,
+            String destinationPlace,
+            String outBoundPartialDate
     ){
         return api.getFlights(
                 country,
                 currency,
                 locale,
-                originplace,
-                destinationplace,
-                outboundpartialdate
+                originPlace,
+                destinationPlace,
+                outBoundPartialDate
         );
     }
 
-    public Call<List<Place>> getPlacesCall(
+    public Call<APIResponse> getPlacesCall(
             String country,
             String currency,
             String locale,

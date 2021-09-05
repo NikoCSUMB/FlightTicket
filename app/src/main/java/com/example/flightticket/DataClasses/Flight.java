@@ -4,13 +4,13 @@ import java.util.Objects;
 
 public class Flight {
     private int id;
-    private int minPrice;
+    private Integer minPrice;
     private String carrier;
     private Place placeDep;
     private Place placeDist;
     private String currency;
 
-    public Flight(int id, int minPrice, String carrier, Place placeDep, Place placeDist, String currency) {
+    public Flight(int id, Integer minPrice, String carrier, Place placeDep, Place placeDist, String currency) {
         this.id = id;
         this.minPrice = minPrice;
         this.carrier = carrier;
@@ -27,11 +27,11 @@ public class Flight {
         this.id = id;
     }
 
-    public int getMinPrice() {
+    public Integer getMinPrice() {
         return minPrice;
     }
 
-    public void setMinPrice(int minPrice) {
+    public void setMinPrice(Integer minPrice) {
         this.minPrice = minPrice;
     }
 
@@ -72,7 +72,12 @@ public class Flight {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Flight flight = (Flight) o;
-        return getId() == flight.getId() && getMinPrice() == flight.getMinPrice() && Objects.equals(getCarrier(), flight.getCarrier()) && Objects.equals(getPlaceDep(), flight.getPlaceDep()) && Objects.equals(getPlaceDist(), flight.getPlaceDist()) && Objects.equals(getCurrency(), flight.getCurrency());
+        return getId() == flight.getId()
+                && getMinPrice().equals(flight.getMinPrice())
+                && Objects.equals(getCarrier(), flight.getCarrier())
+                && Objects.equals(getPlaceDep(), flight.getPlaceDep())
+                && Objects.equals(getPlaceDist(), flight.getPlaceDist())
+                && Objects.equals(getCurrency(), flight.getCurrency());
     }
 
     @Override
@@ -82,13 +87,13 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "Flight{" +
-                "id=" + id +
-                ", minPrice=" + minPrice +
-                ", carrier='" + carrier + '\'' +
-                ", placeDep=" + placeDep +
-                ", placeDist=" + placeDist +
-                ", currency='" + currency + '\'' +
+        return "\nFlight{" +
+                "\nid=" + id +
+                ",\n minPrice=" + minPrice +
+                ",\n carrier='" + carrier + '\'' +
+                ",\n placeDep=" + placeDep +
+                ",\n placeDist=" + placeDist +
+                ",\n currency='" + currency + '\'' +
                 '}';
     }
 }
