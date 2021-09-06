@@ -40,6 +40,7 @@ public class CreateActivity extends AppCompatActivity {
 
         userDAO = Room.databaseBuilder(this, UserDatabase.class, UserDatabase.DB_NAME)
                 .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
                 .build().getUserDAO();
 
         usernames = userDAO.getUsernames();
