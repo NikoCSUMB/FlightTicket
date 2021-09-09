@@ -3,11 +3,16 @@ package com.example.flightticket;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.flightticket.DataClasses.User;
@@ -37,6 +42,7 @@ public class CreateActivity extends AppCompatActivity {
         usernameText = findViewById(R.id.usernameEdit);
         passwordText = findViewById(R.id.passwordEdit);
         createButton = findViewById(R.id.createAccountButton);
+        TextView errorMessage = findViewById(R.id.textView);
 
         userDAO = Room.databaseBuilder(this, UserDatabase.class, UserDatabase.DB_NAME)
                 .allowMainThreadQueries()
@@ -49,28 +55,48 @@ public class CreateActivity extends AppCompatActivity {
         // Validation begins once the button is pressed
         // If both checks pass then the user is inserted into the database
         createButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+                closeKeyboard();
+
                 String username = usernameText.getText().toString();
                 String password = passwordText.getText().toString();
+
                 if (!validateUser(username, usernames)) {
+                    usernameText.setBackgroundColor(Color.BLUE);
+                    errorMessage.setText("That username is already taken!");
+
                     Toast.makeText(getApplicationContext(), "That username is already taken!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 if (!validateEmpty(username, password)) {
+                    usernameText.setBackgroundColor(Color.YELLOW);
+                    passwordText.setBackgroundColor(Color.YELLOW);
+                    errorMessage.setText("Both fields must be filled");
+
                     Toast.makeText(getApplicationContext(), "Both fields must be filled", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 User newUser = new User(username, password);
                 userDAO.insert(newUser);
-                Intent intent = new Intent(CreateActivity.this, LoginActivity.class);
+                Intent intent = new Intent(CreateActivity.this, HomeActivity.class);
                 startActivity(intent); // TODO: replace with proper intent factory
 
             }
+
         });
     }
 
+    public void closeKeyboard(){
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
     /**
      * Searches the list to see if the current username already exists.
      */

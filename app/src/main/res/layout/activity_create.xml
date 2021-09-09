@@ -29,13 +29,32 @@
         android:textStyle="bold" />
 
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/createAccount"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="430dp"
+        android:text="Type in a username and password"
+        android:textAlignment="center"
+        android:textColor="#E91E63"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.275" />
+
     <EditText
         android:id="@+id/usernameEdit"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_below="@id/createAccount"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="50dp"
         android:background="#C8A0D2"
         android:hint="@string/usernameHint"
@@ -54,10 +73,10 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_below="@id/usernameEdit"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="50dp"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
+        android:layout_marginBottom="20dp"
         android:background="#C8A0D2"
         android:hint="@string/passwordHint"
         android:inputType="textPassword"
@@ -68,8 +87,7 @@
         app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569"
-        />
+        app:layout_constraintVertical_bias="0.569" />
 
     <Button
         android:id="@+id/createAccountButton"
@@ -79,7 +97,6 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="150dp"
         android:background="@color/colorAccent"
         android:text="Create Account"
         android:textColor="#000000"
@@ -89,6 +106,5 @@
         app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.569"
-        />
+        app:layout_constraintVertical_bias="0.569" />
 </RelativeLayout>
