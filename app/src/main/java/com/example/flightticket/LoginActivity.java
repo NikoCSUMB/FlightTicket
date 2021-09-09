@@ -3,6 +3,7 @@ package com.example.flightticket;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -79,10 +80,12 @@ public class LoginActivity extends AppCompatActivity {
                 return true;
             }
         }
+        Log.i("ERROR","User");
         return false;
     }
-    public static Boolean validatePassword(String password, String actualPAssword){
-        return actualPAssword==password;
+    public static Boolean validatePassword(String password, String actualPassword){
+
+        return actualPassword.equals(password);
     }
 
 
