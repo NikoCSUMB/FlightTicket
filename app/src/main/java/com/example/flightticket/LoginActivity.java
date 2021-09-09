@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                 passwordInput = loginPassword.getText().toString();
                 User loginUser = userDAO.getUserByUsername(emailInput);
                 if (validateUser(emailInput,usernames)&&validatePassword(passwordInput,loginUser.getPassword())){
-                    Intent i= new Intent(getApplicationContext(), MainActivity.class);
+                    Intent i= new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(i);
                 }else{
                     Toast.makeText(getApplicationContext(), "INVALID USERNAME OR PASSWORD", Toast.LENGTH_SHORT).show();

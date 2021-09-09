@@ -40,7 +40,7 @@
         android:layout_below="@+id/loginPassword"
         android:layout_marginTop="70dp"
         android:id="@+id/loginBtn"
-        style="@style/Widget.AppCompat.Button"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_centerInParent="true"
