@@ -24,7 +24,6 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         signUpButton.setOnClickListener(this);
     }
 
-    //
     @Override
     public void onClick(View view) {
         switch (view.getId()){
