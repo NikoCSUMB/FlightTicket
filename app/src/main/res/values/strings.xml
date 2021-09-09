@@ -3,4 +3,7 @@
     <string name="usernameHint">Enter a username</string>
     <string name="passwordHint">Enter a password</string>
     <string name="createButton">Create Account</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
 </resources>

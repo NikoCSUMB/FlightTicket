@@ -1,20 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_background">
 
-    <TextView
-        android:id="@+id/welcome"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/flightTicketLogo"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        app:srcCompat="@drawable/flightapplogo"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/flightTicketLogo"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:text="Login"
-        android:textColor="#9C27B0"
-        android:textSize="35dp"
-        android:textStyle="bold" />
+        android:hint="@string/email"
+        android:id="@+id/loginEmail"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="50dp"
+        android:padding="10dp"/>
+
+    <EditText
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/loginEmail"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:id="@+id/loginPassword"
+        android:inputType="textPassword"
+        android:layout_marginTop="50dp"
+        android:padding="10dp"/>
+
+    <Button
+        android:layout_below="@+id/loginPassword"
+        android:layout_marginTop="70dp"
+        android:id="@+id/loginBtn"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/colorAccent"
+        android:text="@string/login"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+
 
 </RelativeLayout>
