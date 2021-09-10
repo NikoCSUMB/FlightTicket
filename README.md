@@ -115,4 +115,36 @@ Keep tabs on your next vacation trip with FlightTicket. Search through endless a
         3. Use enqueue when you make your requests in Activities, it will make requests in a separate thread and Android Studio will not throw exceptions at you:
 retrofit.getFlightsCall([your params here]).enqueue([CallBack object here])
         4. Your CallBack object will look something like this:
-`new Callback<>() {`
+        
+    new Callback<>() {
+          @Override
+          public void onResponse(Call<APIResponse> call, Response<APIResponse> response) {
+              if (response.isSuccessful()) {
+                  assert response.body() != null;
+                  Log.i("Response casted to List<Flight>", response.body().getDataClass(Flight.class).toString());
+              } else {
+                  new Exception("Request failed, code: " + response.code()).printStackTrace();
+              }
+          }
+
+
+              @Override
+              public void onFailure(Call<APIResponse> call, Throwable t) {
+                  try {
+                      throw t;
+                  } catch (Throwable throwable) {
+                      throwable.printStackTrace();
+                  }
+              }
+          }
+        
+        
+5. Within onResponse function you will get response object, from response object you can extract body:
+    `response.body()`
+    6. Once you do that you will get APIResponse object this object has function getDataClass, this function will return List of specified class parsed from APIResponse, for example, you can use it like this:
+    `[APIResponse object].getDataClass(Flight.class)`
+          OR
+    `[APIResponse object].getDataClass(Place.class)`
+          Although you need to make sure that APIResponse object has data to parse these objects from. For example, you should not try to use getDataClass(Flight.class) on APIResponse object that you received by calling getPlacesCall on retrofit. Since it will not return enough information to extract Flight object from APIResponse.
+    7. getDataClass function will return List<?> that will need to be cast into appropriate data format if you want to use it for anything other than printing, you can just do the following to cast it:
+    `List<Flight> flights = (List<Flight>) apiResponse.getDataClass(Flight.class);`
