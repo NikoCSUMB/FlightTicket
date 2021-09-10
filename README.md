@@ -110,19 +110,17 @@ Keep tabs on your next vacation trip with FlightTicket. Search through endless a
 
 1. You need to get RetrofitClient, you will use it to send requests:
 
-  ```java RetrofitClient retrofit = RetrofitClient.getClient();``` 
+    ```java RetrofitClient retrofit = RetrofitClient.getClient();``` 
 
 2. Specify what call you what to make and pass parameters:
-
-  ```java retrofit.getFlightsCall([your params here])```
-    
-  OR
-        
-  ```java retrofit.getPlacesCall([your params here])```
+  
+    ```java retrofit.getFlightsCall([your params here])```
+OR 
+    ```java retrofit.getPlacesCall([your params here])```
 
 3. Use enqueue when you make your requests in Activities, it will make requests in a separate thread and Android Studio will not throw exceptions at you:
 
-  ```java retrofit.getFlightsCall([your params here]).enqueue([CallBack object here])```
+    ```java retrofit.getFlightsCall([your params here]).enqueue([CallBack object here])```
 
 4. Your CallBack object will look something like this:
 
