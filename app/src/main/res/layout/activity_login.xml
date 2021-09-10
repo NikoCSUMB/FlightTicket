@@ -19,7 +19,7 @@
         android:layout_below="@+id/flightTicketLogo"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:hint="@string/email"
+        android:hint="@string/username"
         android:id="@+id/loginEmail"
         android:inputType="textEmailAddress"
         android:layout_marginTop="50dp"
