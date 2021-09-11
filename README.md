@@ -160,7 +160,7 @@ OR
           
     ```[APIResponse object].getDataClass(Place.class)```
     
-          Although you need to make sure that APIResponse object has data to parse these objects from. For example, you should not try to use getDataClass(Flight.class) on APIResponse object that you received by calling getPlacesCall on retrofit. Since it will not return enough information to extract Flight object from APIResponse.
+    Although you need to make sure that APIResponse object has data to parse these objects from. For example, you should not try to use getDataClass(Flight.class) on APIResponse object that you received by calling getPlacesCall on retrofit. Since it will not return enough information to extract Flight object from APIResponse.
     
 7. getDataClass function will return List<?> that will need to be cast into appropriate data format if you want to use it for anything other than printing, you can just do the following to cast it:
 
