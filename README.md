@@ -150,17 +150,17 @@ OR
         
 5. Within onResponse function you will get response object, from response object you can extract body:
 
-  ```java response.body()```
+     ```java response.body()```
 
 6. Once you do that you will get APIResponse object this object has function getDataClass, this function will return List of specified class parsed from APIResponse, for example, you can use it like this:
 
-    ```java [APIResponse object].getDataClass(Flight.class)```
+    ```[APIResponse object].getDataClass(Flight.class)```
     
     OR
           
-    ```java [APIResponse object].getDataClass(Place.class)```
+    ```[APIResponse object].getDataClass(Place.class)```
     
-          Although you need to make sure that APIResponse object has data to parse these objects from. For example, you should not try to use getDataClass(Flight.class) on APIResponse object that you received by calling getPlacesCall on retrofit. Since it will not return enough information to extract Flight object from APIResponse.
+    Although you need to make sure that APIResponse object has data to parse these objects from. For example, you should not try to use getDataClass(Flight.class) on APIResponse object that you received by calling getPlacesCall on retrofit. Since it will not return enough information to extract Flight object from APIResponse.
     
 7. getDataClass function will return List<?> that will need to be cast into appropriate data format if you want to use it for anything other than printing, you can just do the following to cast it:
 
