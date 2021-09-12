@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     SharedPreferences userPref;
+    SharedPreferences.Editor userPrefEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                userPrefEditor = userPref.edit();
+                userPrefEditor.clear();
+                userPrefEditor.commit();
                 Intent logoutIntent = new Intent(HomeActivity.this, LandingActivity.class);
                 startActivity(logoutIntent);
             }
