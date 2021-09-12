@@ -19,9 +19,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         Button searchFlightsButton = (Button) findViewById(R.id.searchFlightsButton);
         Button savedFlightsButton = (Button) findViewById(R.id.savedFlightsButton);
+        Button logoutButton = findViewById(R.id.logoutButton);
 
         searchFlightsButton.setOnClickListener(this);
         savedFlightsButton.setOnClickListener(this);
+
+        // android is throwing warnings about the switch case format so I'm just gonna use this
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent logoutIntent = new Intent(HomeActivity.this, LandingActivity.class);
+                startActivity(logoutIntent);
+            }
+        });
     }
 
     @Override
@@ -36,6 +46,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(createIntent);
                 break;
         }
-
     }
+
 }
