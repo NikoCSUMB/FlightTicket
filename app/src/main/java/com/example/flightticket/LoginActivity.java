@@ -2,6 +2,7 @@ package com.example.flightticket;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,9 +26,11 @@ public class LoginActivity extends AppCompatActivity {
     UserDAO userDAO;
     static List<String> usernames;
 
+    SharedPreferences userPref;
+    SharedPreferences.Editor userPrefEditor;
+
     EditText loginEmail;
     EditText loginPassword;
-
     Button loginBtn;
 
     String emailInput;
@@ -47,13 +50,14 @@ public class LoginActivity extends AppCompatActivity {
         loginPassword = findViewById(R.id.loginPassword);
         loginBtn = findViewById(R.id.loginBtn);
 
-
         userDAO = Room.databaseBuilder(this, UserDatabase.class, UserDatabase.DB_NAME)
                 .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build().getUserDAO();
-
         usernames = userDAO.getUsernames();
+
+        userPref = getSharedPreferences("userPreferences", MODE_PRIVATE);
+        userPrefEditor = userPref.edit();
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                 passwordInput = loginPassword.getText().toString();
                 User loginUser = userDAO.getUserByUsername(emailInput);
                 if (validateUser(emailInput,usernames)&&validatePassword(passwordInput,loginUser.getPassword())){
+                    userPrefEditor.putString("username", emailInput);
+                    userPrefEditor.commit();
                     Intent i= new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(i);
                 }else{
