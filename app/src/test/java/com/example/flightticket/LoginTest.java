@@ -1,12 +1,6 @@
 package com.example.flightticket;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import androidx.room.Room;
-
-import com.example.flightticket.db.UserDAO;
-import com.example.flightticket.db.UserDatabase;
 
 import org.junit.Test;
 

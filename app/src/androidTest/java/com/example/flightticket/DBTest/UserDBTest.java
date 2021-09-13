@@ -1,19 +1,20 @@
 package com.example.flightticket.DBTest;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 import android.content.Context;
 
 import androidx.room.Room;
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
+
+import com.example.flightticket.DB.UserDAO;
+import com.example.flightticket.DB.UserDatabase;
+import com.example.flightticket.DataClasses.User;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import static org.junit.Assert.*;
-
-import com.example.flightticket.DataClasses.User;
-import com.example.flightticket.db.UserDAO;
-import com.example.flightticket.db.UserDatabase;
 
 import java.util.List;
 

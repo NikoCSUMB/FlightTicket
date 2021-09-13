@@ -1,4 +1,4 @@
-package com.example.flightticket.db;
+package com.example.flightticket.DB;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
