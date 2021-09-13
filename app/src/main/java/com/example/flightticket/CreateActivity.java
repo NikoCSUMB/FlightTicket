@@ -82,8 +82,8 @@ public class CreateActivity extends AppCompatActivity {
 
                 User newUser = new User(username, password);
                 userDAO.insert(newUser);
-                Intent intent = new Intent(CreateActivity.this, HomeActivity.class);
-                startActivity(intent); // TODO: replace with proper intent factory
+                Intent intent = new Intent(CreateActivity.this, LandingActivity.class);
+                startActivity(intent);
 
             }
 
