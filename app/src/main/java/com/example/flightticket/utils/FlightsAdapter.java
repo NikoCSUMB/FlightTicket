@@ -44,6 +44,8 @@ public class FlightsAdapter extends BaseAdapter implements Filterable {
         this.initialFlights = flights;
     }
 
+
+
     @Override
     public int getCount() {
         return flights.size();
@@ -109,23 +111,20 @@ public class FlightsAdapter extends BaseAdapter implements Filterable {
                     Log.i("FilterSettings", String.valueOf(filterSettings));
                 } catch (ArrayIndexOutOfBoundsException e){
                     Log.i("Filter", "Incorrect filter format");
-                    filterResults.values = flights;
-                    filterResults.count = flights.size();
+                    filterResults.values = initialFlights;
+                    filterResults.count = initialFlights.size();
                     return filterResults;
                 }
 
                 filterSettings.forEach((key, value) -> {
                     Log.i("FilterSettingsIter", key + " | " + value);
                     Log.i("FilterDataGettersHasFunction?", String.valueOf(FlightsAdapter.flightDataGetters.containsKey(key)));
-                    if (FlightsAdapter.flightDataGetters.containsKey(key)){
-                        initialFlights.forEach((flight -> {
-                            Log.i("FilterFlightToData", value + " =?= " + (FlightsAdapter.flightDataGetters.get(key)).getData(flight));
-                            if (value.equals(String.valueOf((
-                                    FlightsAdapter.flightDataGetters.get(key)).getData(flight)
-                            ))){
-                                filteredFlights.add(flight);
-                            }
-                        }));
+                    if (FlightsAdapter.flightDataGetters.containsKey(key)) {
+                        filteredFlights.addAll(initialFlights.stream().filter(
+                            flight -> value.equals(String.valueOf(
+                                (FlightsAdapter.flightDataGetters.get(key)).getData(flight))
+                            )
+                        ).collect(Collectors.toList()));
                     }
                 });
                 Log.i("FilterFilteredFlights", String.valueOf(filteredFlights));
