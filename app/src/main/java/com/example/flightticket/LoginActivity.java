@@ -10,14 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.flightticket.DataClasses.User;
-
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import com.example.flightticket.db.UserDAO;
-import com.example.flightticket.db.UserDatabase;
+import com.example.flightticket.DB.UserDAO;
+import com.example.flightticket.DB.UserDatabase;
+import com.example.flightticket.DataClasses.User;
 
 import java.util.List;
 

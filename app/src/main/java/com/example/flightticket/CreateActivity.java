@@ -1,25 +1,23 @@
 package com.example.flightticket;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.flightticket.DataClasses.User;
-import com.example.flightticket.db.UserDAO;
-import com.example.flightticket.db.UserDatabase;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
-import java.util.ArrayList;
+import com.example.flightticket.DB.UserDAO;
+import com.example.flightticket.DB.UserDatabase;
+import com.example.flightticket.DataClasses.User;
+
 import java.util.List;
 
 /**

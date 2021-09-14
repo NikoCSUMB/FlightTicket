@@ -1,13 +1,16 @@
 package com.example.flightticket.APITests;
 
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 
 import com.example.flightticket.API.APIResponseClasses.APIResponse;
 import com.example.flightticket.API.RetrofitClient;
 import com.example.flightticket.DataClasses.Flight;
 import com.example.flightticket.DataClasses.Place;
+
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -75,8 +78,6 @@ public class APITests {
         String originPlace = "SFO-sky";
         String destinationPlace = "ORD-sky";
         String outBoundPartialDate = "2021-10-18";
-
-
 
         RetrofitClient retrofit = RetrofitClient.getClient();
         APIResponse apiResponse = retrofit.getFlightsCall(

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_flight_info_background"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/FlightInfoRoute"
+        android:textColor="@color/accent"
+        android:textSize="@dimen/textSizeBig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/FlightInfoPlaceDep"
+            android:textColor="@color/darkPurple"
+            android:textSize="@dimen/textSizeMiddle"
+            android:layout_gravity="start"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/FlightInfoPlaceDist"
+            android:textColor="@color/darkPurple"
+            android:textSize="@dimen/textSizeMiddle"
+            android:layout_gravity="end"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/FlightInfoCarrier"
+        android:textColor="@color/darkPurple"
+        android:textSize="@dimen/textSizeMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/FlightInfoPrice"
+        android:textColor="@color/darkPurple"
+        android:textSize="@dimen/textSizeMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
