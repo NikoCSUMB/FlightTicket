@@ -18,12 +18,18 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class FlightsAdapter extends BaseAdapter implements Filterable {
 
-    private static final String routeTemplate = "%s -> %s";
-    private static final String detailsTemplate = "Price: %s";
+    public static final String routeTemplate = "%s -> %s";
+    public static final String priceTemplate = "Price: %s%s";
+    public static final String carrierTemplate = "Airline: %s";
+    public static final String placeTemple = "Airport: %s\nCountry: %s";
+
+
+
     private static final HashMap<String, FlightDataGetter> flightDataGetters = new HashMap<>() {{
         put("minprice", Flight::getMinPrice);
         put("carrier", Flight::getCarrier);
@@ -43,8 +49,6 @@ public class FlightsAdapter extends BaseAdapter implements Filterable {
         this.flights = flights;
         this.initialFlights = flights;
     }
-
-
 
     @Override
     public int getCount() {
@@ -86,7 +90,7 @@ public class FlightsAdapter extends BaseAdapter implements Filterable {
             }
 
             if (itemDetailsField != null) {
-                itemDetailsField.setText(String.format(FlightsAdapter.detailsTemplate, flight.getMinPrice()));
+                itemDetailsField.setText(String.format(FlightsAdapter.priceTemplate, flight.getMinPrice(), flight.getCurrency()));
             }
         }
 
@@ -122,7 +126,7 @@ public class FlightsAdapter extends BaseAdapter implements Filterable {
                     if (FlightsAdapter.flightDataGetters.containsKey(key)) {
                         filteredFlights.addAll(initialFlights.stream().filter(
                             flight -> value.equals(String.valueOf(
-                                (FlightsAdapter.flightDataGetters.get(key)).getData(flight))
+                                (Objects.requireNonNull(FlightsAdapter.flightDataGetters.get(key))).getData(flight))
                             )
                         ).collect(Collectors.toList()));
                     }

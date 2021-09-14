@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.flightticket.API.APIResponseClasses.APIResponse;
@@ -90,5 +93,53 @@ public class SearchFlights extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {}
         });
 
+        listViewFlights.setOnItemClickListener((adapterView, view, position, l) -> {
+            Flight flight = (Flight) adapterView.getItemAtPosition(position);
+            showFlightInfo(flight);
+        });
+
+    }
+
+    private void showFlightInfo(Flight flight){
+        AlertDialog.Builder flightInfoBuilder = new AlertDialog.Builder(this);
+        View flightInfoView = getLayoutInflater().inflate(R.layout.dialog_flight_info, null);
+
+        TextView flightInfoRoute = flightInfoView.findViewById(R.id.FlightInfoRoute);
+        TextView flightInfoPlaceDep = flightInfoView.findViewById(R.id.FlightInfoPlaceDep);
+        TextView flightInfoPlaceDist = flightInfoView.findViewById(R.id.FlightInfoPlaceDist);
+        TextView flightInfoCarrier = flightInfoView.findViewById(R.id.FlightInfoCarrier);
+        TextView flightInfoPrice = flightInfoView.findViewById(R.id.FlightInfoPrice);
+
+        flightInfoRoute.setText(String.format(
+                FlightsAdapter.routeTemplate,
+                flight.getPlaceDep().getCityName(),
+                flight.getPlaceDist().getCityName()
+        ));
+        flightInfoPlaceDep.setText(String.format(
+                FlightsAdapter.placeTemple,
+                flight.getPlaceDep().getAirPortName(),
+                flight.getPlaceDep().getCountryName()
+        ));
+        flightInfoPlaceDist.setText(String.format(
+                FlightsAdapter.placeTemple,
+                flight.getPlaceDist().getAirPortName(),
+                flight.getPlaceDist().getCountryName()
+        ));
+        flightInfoCarrier.setText(String.format(
+                FlightsAdapter.carrierTemplate,
+                flight.getCarrier()
+        ));
+        flightInfoPrice.setText(String.format(
+                FlightsAdapter.priceTemplate,
+                flight.getMinPrice(),
+                flight.getCurrency()
+        ));
+
+//        if(flightInfoView.getParent() != null) {
+//            ((ViewGroup)flightInfoView.getParent()).removeView(flightInfoView);
+//        }
+        flightInfoBuilder.setView(flightInfoView);
+        flightInfoBuilder.create();
+        flightInfoBuilder.show();
     }
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     android:orientation="vertical"
     tools:context=".SearchFlights">
 
@@ -14,6 +15,9 @@
 
     <ListView
         android:id="@+id/ListViewFlights"
+        android:fadingEdgeLength="100dp"
+        android:divider="@android:color/transparent"
+        android:layout_margin="@dimen/listMargin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>
