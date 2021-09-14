@@ -100,19 +100,14 @@ public class CreateActivity extends AppCompatActivity {
     /**
      * Searches the list to see if the current username already exists.
      */
-    public boolean validateUser(String username, List<String> names){
-        for (String name : names){
-            if (username.equals(name)){
-                return false;
-            }
-        }
-        return true;
+    public static boolean validateUser(String username, List<String> names){
+        return (!names.contains(username));
     }
 
     /**
      * Checks if both input fields are filled
      */
-    public boolean validateEmpty(String username, String password) {
+    public static boolean validateEmpty(String username, String password) {
         return username.length() != 0 && password.length() != 0;
     }
 
