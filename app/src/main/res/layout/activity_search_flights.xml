@@ -8,10 +8,24 @@
     android:orientation="vertical"
     tools:context=".SearchFlights">
 
-    <EditText
-        android:id="@+id/FilterField"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/SendRequestDialogBtn"
+            android:text="@string/search_flights"
+            android:layout_alignParentStart="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/SetFilterDialogBtn"
+            android:text="@string/filter_flights"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/ListViewFlights"

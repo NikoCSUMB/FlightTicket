@@ -1,34 +1,24 @@
 package com.example.flightticket.utils;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.example.flightticket.DataClasses.Flight;
 import com.example.flightticket.R;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
-public class FlightsAdapter extends BaseAdapter implements Filterable {
+public class FlightsAdapter extends BaseAdapter {
 
     public static final String routeTemplate = "%s -> %s";
     public static final String priceTemplate = "Price: %s%s";
     public static final String carrierTemplate = "Airline: %s";
     public static final String placeTemple = "Airport: %s\nCountry: %s";
-
-
 
     private static final HashMap<String, FlightDataGetter> flightDataGetters = new HashMap<>() {{
         put("minprice", Flight::getMinPrice);
@@ -97,51 +87,55 @@ public class FlightsAdapter extends BaseAdapter implements Filterable {
         return view;
     }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence charSeqFilter) {
-                FilterResults filterResults = new FilterResults();
-                List<Flight> filteredFlights = new ArrayList<>();
-                String strFilter = charSeqFilter.toString().toLowerCase();
-                Map<String, String> filterSettings;
-                try {
-                    filterSettings = (HashMap<String, String>)
-                        Arrays.stream(strFilter.split(","))
-                        .map(s -> s.split(":"))
-                        .collect(Collectors.toMap(key -> key[0], val -> val[1]));
-                    Log.i("FilterSettings", String.valueOf(filterSettings));
-                } catch (ArrayIndexOutOfBoundsException e){
-                    Log.i("Filter", "Incorrect filter format");
-                    filterResults.values = initialFlights;
-                    filterResults.count = initialFlights.size();
-                    return filterResults;
-                }
-
-                filterSettings.forEach((key, value) -> {
-                    Log.i("FilterSettingsIter", key + " | " + value);
-                    Log.i("FilterDataGettersHasFunction?", String.valueOf(FlightsAdapter.flightDataGetters.containsKey(key)));
-                    if (FlightsAdapter.flightDataGetters.containsKey(key)) {
-                        filteredFlights.addAll(initialFlights.stream().filter(
-                            flight -> value.equals(String.valueOf(
-                                (Objects.requireNonNull(FlightsAdapter.flightDataGetters.get(key))).getData(flight))
-                            )
-                        ).collect(Collectors.toList()));
-                    }
-                });
-                Log.i("FilterFilteredFlights", String.valueOf(filteredFlights));
-                filterResults.values = filteredFlights;
-                filterResults.count = filteredFlights.size();
-
-                return filterResults;
-            }
-            @Override
-            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-                flights = (List<Flight>) filterResults.values;
-                notifyDataSetChanged();
-            }
-        };
+    public void filterFlights(HashMap<String, String> filterSettings){
+        //TODO: Implement this
     }
+
+//    @SuppressWarnings("unchecked")
+//    @Override
+//    public Filter getFilter() {
+//        return new Filter() {
+//            @Override
+//            protected FilterResults performFiltering(CharSequence charSeqFilter) {
+//                FilterResults filterResults = new FilterResults();
+//                List<Flight> filteredFlights = new ArrayList<>();
+//                String strFilter = charSeqFilter.toString().toLowerCase();
+//                Map<String, String> filterSettings;
+//                try {
+//                    filterSettings = (HashMap<String, String>)
+//                        Arrays.stream(strFilter.split(","))
+//                        .map(s -> s.split(":"))
+//                        .collect(Collectors.toMap(key -> key[0], val -> val[1]));
+//                    Log.i("FilterSettings", String.valueOf(filterSettings));
+//                } catch (ArrayIndexOutOfBoundsException e){
+//                    Log.i("Filter", "Incorrect filter format");
+//                    filterResults.values = initialFlights;
+//                    filterResults.count = initialFlights.size();
+//                    return filterResults;
+//                }
+//
+//                filterSettings.forEach((key, value) -> {
+//                    Log.i("FilterSettingsIter", key + " | " + value);
+//                    Log.i("FilterDataGettersHasFunction?", String.valueOf(FlightsAdapter.flightDataGetters.containsKey(key)));
+//                    if (FlightsAdapter.flightDataGetters.containsKey(key)) {
+//                        filteredFlights.addAll(initialFlights.stream().filter(
+//                            flight -> value.equals(String.valueOf(
+//                                (Objects.requireNonNull(FlightsAdapter.flightDataGetters.get(key))).getData(flight))
+//                            )
+//                        ).collect(Collectors.toList()));
+//                    }
+//                });
+//                Log.i("FilterFilteredFlights", String.valueOf(filteredFlights));
+//                filterResults.values = filteredFlights;
+//                filterResults.count = filteredFlights.size();
+//
+//                return filterResults;
+//            }
+//            @Override
+//            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+//                flights = (List<Flight>) filterResults.values;
+//                notifyDataSetChanged();
+//            }
+//        };
+//    }
 }
