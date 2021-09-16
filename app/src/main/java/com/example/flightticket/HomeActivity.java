@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.flightticket.utils.FactoryIntent;
+
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     SharedPreferences userPref;
@@ -40,8 +42,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 userPrefEditor = userPref.edit();
                 userPrefEditor.clear();
                 userPrefEditor.commit();
-                Intent logoutIntent = new Intent(HomeActivity.this, LandingActivity.class);
-                startActivity(logoutIntent);
+                startActivity(FactoryIntent.getIntent(LandingActivity.class,getApplicationContext()));
             }
         });
     }
@@ -50,12 +51,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.searchFlightsButton:
-                Intent loginIntent = new Intent(HomeActivity.this, SearchFlights.class);
-                startActivity(loginIntent);
+                startActivity(FactoryIntent.getIntent(SearchFlights.class,getApplicationContext()));
                 break;
             case R.id.savedFlightsButton:
-                Intent createIntent = new Intent(HomeActivity.this, SavedFlights.class);
-                startActivity(createIntent);
+                startActivity(FactoryIntent.getIntent(SavedFlights.class,getApplicationContext()));
                 break;
         }
     }
