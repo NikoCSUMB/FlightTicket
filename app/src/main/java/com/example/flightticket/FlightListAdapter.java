@@ -38,11 +38,11 @@ public class FlightListAdapter extends RecyclerView.Adapter<FlightListAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull FlightListAdapter.MyViewHolder holder, int position) {
-        holder.flightId.setText(this.flightList.get(position).getId());
-        holder.minPrice.setText(this.flightList.get(position).getMinPrice());
+        holder.flightId.setText(String.valueOf(this.flightList.get(position).getId()));
+        holder.minPrice.setText(String.valueOf(this.flightList.get(position).getMinPrice()));
         holder.flightCarrier.setText(this.flightList.get(position).getCarrier());
-        holder.placeDep.setText(this.flightList.get(position).getPlaceDep().getAirPortName());
-        holder.placeDist.setText(this.flightList.get(position).getPlaceDist().getAirPortName());
+        holder.placeDep.setText(String.valueOf(this.flightList.get(position).getPlaceDep().getAirPortName()));
+        holder.placeDist.setText(String.valueOf(this.flightList.get(position).getPlaceDist().getAirPortName()));
         holder.currency.setText(this.flightList.get(position).getCurrency());
     }
 
