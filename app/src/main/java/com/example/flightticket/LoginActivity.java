@@ -17,6 +17,7 @@ import androidx.room.Room;
 
 import com.example.flightticket.db.UserDAO;
 import com.example.flightticket.db.UserDatabase;
+import com.example.flightticket.utils.FactoryIntent;
 
 import java.util.List;
 
@@ -63,8 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                 passwordInput = loginPassword.getText().toString();
                 User loginUser = userDAO.getUserByUsername(emailInput);
                 if (validateUser(emailInput,usernames)&&validatePassword(passwordInput,loginUser.getPassword())){
-                    Intent i= new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(i);
+                    startActivity(FactoryIntent.getIntent(HomeActivity.class,getApplicationContext()));
                 }else{
                     Toast.makeText(getApplicationContext(), "INVALID USERNAME OR PASSWORD", Toast.LENGTH_SHORT).show();
                 }
