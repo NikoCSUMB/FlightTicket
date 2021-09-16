@@ -1,25 +1,23 @@
 package com.example.flightticket;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.flightticket.DataClasses.User;
-import com.example.flightticket.db.UserDAO;
-import com.example.flightticket.db.UserDatabase;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
-import java.util.ArrayList;
+import com.example.flightticket.DB.UserDAO;
+import com.example.flightticket.DB.UserDatabase;
+import com.example.flightticket.DataClasses.User;
+
 import java.util.List;
 
 /**
@@ -82,8 +80,8 @@ public class CreateActivity extends AppCompatActivity {
 
                 User newUser = new User(username, password);
                 userDAO.insert(newUser);
-                Intent intent = new Intent(CreateActivity.this, HomeActivity.class);
-                startActivity(intent); // TODO: replace with proper intent factory
+                Intent intent = new Intent(CreateActivity.this, LandingActivity.class);
+                startActivity(intent);
 
             }
 
@@ -100,19 +98,14 @@ public class CreateActivity extends AppCompatActivity {
     /**
      * Searches the list to see if the current username already exists.
      */
-    public boolean validateUser(String username, List<String> names){
-        for (String name : names){
-            if (username.equals(name)){
-                return false;
-            }
-        }
-        return true;
+    public static boolean validateUser(String username, List<String> names){
+        return (!names.contains(username));
     }
 
     /**
      * Checks if both input fields are filled
      */
-    public boolean validateEmpty(String username, String password) {
+    public static boolean validateEmpty(String username, String password) {
         return username.length() != 0 && password.length() != 0;
     }
 

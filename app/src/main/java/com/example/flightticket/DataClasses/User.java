@@ -3,7 +3,7 @@ package com.example.flightticket.DataClasses;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.flightticket.db.UserDatabase;
+import com.example.flightticket.DB.UserDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
