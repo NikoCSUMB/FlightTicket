@@ -13,8 +13,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+
 import com.example.flightticket.DB.UserDAO;
 import com.example.flightticket.DB.UserDatabase;
+import com.example.flightticket.utils.FactoryIntent;
 import com.example.flightticket.DataClasses.User;
 
 import java.util.List;
@@ -67,8 +69,8 @@ public class LoginActivity extends AppCompatActivity {
                 if (validateUser(emailInput,usernames)&&validatePassword(passwordInput,loginUser.getPassword())){
                     userPrefEditor.putString("username", emailInput);
                     userPrefEditor.commit();
-                    Intent i= new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(i);
+                    startActivity(FactoryIntent.getIntent(HomeActivity.class,getApplicationContext()));
+
                 }else{
                     Toast.makeText(getApplicationContext(), "INVALID USERNAME OR PASSWORD", Toast.LENGTH_SHORT).show();
                 }

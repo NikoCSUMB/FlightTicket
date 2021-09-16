@@ -8,6 +8,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.flightticket.utils.FactoryIntent;
+
 public class LandingActivity extends AppCompatActivity implements View.OnClickListener {
 
     SharedPreferences userPref;
@@ -23,8 +25,7 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         // Check if user is already logged in and take them to the home page
         userPref = getSharedPreferences("userPreferences", MODE_PRIVATE);
         if (!userPref.getString("username", "").equals("")) {
-            Intent homeIntent = new Intent(LandingActivity.this, HomeActivity.class);
-            startActivity(homeIntent);
+            startActivity(FactoryIntent.getIntent(HomeActivity.class,getApplicationContext()));
         }
 
         loginButton.setOnClickListener(this);
@@ -35,12 +36,10 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.loginButton:
-                Intent loginIntent = new Intent(LandingActivity.this, LoginActivity.class);
-                startActivity(loginIntent);
+                startActivity(FactoryIntent.getIntent(LoginActivity.class,getApplicationContext()));
                 break;
             case R.id.signUpButton:
-                Intent createIntent = new Intent(LandingActivity.this, CreateActivity.class);
-                startActivity(createIntent);
+                startActivity(FactoryIntent.getIntent(CreateActivity.class,getApplicationContext()));
                 break;
         }
 

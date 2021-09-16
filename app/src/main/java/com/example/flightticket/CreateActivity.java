@@ -17,6 +17,7 @@ import androidx.room.Room;
 import com.example.flightticket.DB.UserDAO;
 import com.example.flightticket.DB.UserDatabase;
 import com.example.flightticket.DataClasses.User;
+import com.example.flightticket.utils.FactoryIntent;
 
 import java.util.List;
 
@@ -80,8 +81,8 @@ public class CreateActivity extends AppCompatActivity {
 
                 User newUser = new User(username, password);
                 userDAO.insert(newUser);
-                Intent intent = new Intent(CreateActivity.this, LandingActivity.class);
-                startActivity(intent);
+                startActivity(FactoryIntent.getIntent(LandingActivity.class,getApplicationContext()));
+
 
             }
 
