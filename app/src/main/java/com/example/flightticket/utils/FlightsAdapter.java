@@ -12,6 +12,8 @@ import com.example.flightticket.R;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class FlightsAdapter extends BaseAdapter {
 
@@ -88,7 +90,16 @@ public class FlightsAdapter extends BaseAdapter {
     }
 
     public void filterFlights(HashMap<String, String> filterSettings){
-        //TODO: Implement this
+        Integer fromPrice = Integer.parseInt(Objects.requireNonNull(filterSettings.get("fromPrice")));
+        Integer toPrice = Integer.parseInt(Objects.requireNonNull(filterSettings.get("toPrice")));
+        String carrier = filterSettings.get("carrier");
+        flights = initialFlights.stream()
+                .filter(
+                        flight -> (
+                                flight.getMinPrice() >= fromPrice && flight.getMinPrice() <= toPrice
+                        ) || flight.getCarrier().equals(carrier)
+                ).collect(Collectors.toList());
+        notifyDataSetChanged();
     }
 
 //    @SuppressWarnings("unchecked")

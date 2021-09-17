@@ -26,7 +26,7 @@ public class FlightRequestDialog {
     public FlightRequestDialog(AppCompatActivity activity){
         flightRequestBuilder = new AlertDialog.Builder(activity);
         flightRequestView = activity.getLayoutInflater().inflate(
-                R.layout.dialog_flight_info,
+                R.layout.dialog_flight_request,
                 activity.findViewById(android.R.id.content),
                 false
         );
@@ -38,10 +38,17 @@ public class FlightRequestDialog {
         originPlaceField = flightRequestView.findViewById(R.id.OriginPlace);
         outBoundPartialDateField = flightRequestView.findViewById(R.id.OutBoundPartialDate);
         sendRequestBtn = flightRequestView.findViewById(R.id.SendRequestBtn);
+
+        flightRequestBuilder.setView(flightRequestView);
+        flightRequestBuilder.create();
     }
 
     public Button getSendRequestBtn(){
         return sendRequestBtn;
+    }
+
+    public void showDialog(){
+        flightRequestBuilder.show();
     }
 
     public HashMap<String, String> getRequestParameters(){

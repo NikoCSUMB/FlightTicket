@@ -32,17 +32,24 @@ public class FlightFilterDialog {
         toPriceField = flightFilterView.findViewById(R.id.ToPrice);
         carrierField = flightFilterView.findViewById(R.id.Carrier);
         applyFilterBtn = flightFilterView.findViewById(R.id.ApplyFiltersBtn);
+
+        flightFilterBuilder.setView(flightFilterView);
+        flightFilterBuilder.create();
     }
 
     public Button getApplyFilterBtn(){
         return applyFilterBtn;
     }
 
+    public void showDialog(){
+        flightFilterBuilder.show();
+    }
+
     public HashMap<String, String> getFilterSettings(){
         return new HashMap<>(){{
             put("fromPrice", fromPriceField.getText().toString());
             put("toPrice", toPriceField.getText().toString());
-            put("carrierField", carrierField.getText().toString());
+            put("carrier", carrierField.getText().toString());
         }};
     }
 }

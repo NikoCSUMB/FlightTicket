@@ -7,31 +7,37 @@
 
     <EditText
         android:id="@+id/OriginPlace"
+        android:hint="@string/origin_place"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <EditText
         android:id="@+id/DestinationPlace"
+        android:hint="@string/destination_place"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <EditText
         android:id="@+id/Country"
+        android:hint="@string/country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <EditText
         android:id="@+id/OutBoundPartialDate"
+        android:hint="@string/out_bound_partial_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <EditText
         android:id="@+id/Currency"
+        android:hint="@string/currency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <EditText
         android:id="@+id/Locale"
+        android:hint="@string/locale"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

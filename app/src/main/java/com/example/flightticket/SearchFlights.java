@@ -86,6 +86,7 @@ public class SearchFlights extends AppCompatActivity {
                     }
                 });
             });
+            flightRequestDialog.showDialog();
         });
 
         setFilterDialogBtn.setOnClickListener(view -> {
@@ -93,6 +94,7 @@ public class SearchFlights extends AppCompatActivity {
             flightFilterDialog.getApplyFilterBtn().setOnClickListener(viewFilter -> {
                 flightsAdapter.filterFlights(flightFilterDialog.getFilterSettings());
             });
+            flightFilterDialog.showDialog();
         });
     }
 }
