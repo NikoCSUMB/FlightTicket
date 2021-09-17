@@ -1,6 +1,5 @@
 package com.example.flightticket.utils;
 
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -11,44 +10,34 @@ import com.example.flightticket.R;
 
 import java.util.HashMap;
 
-public class FlightRequestDialog {
-    private Button sendRequestBtn;
-    private EditText countryField;
-    private EditText currencyField;
-    private EditText destinationPlaceField;
-    private EditText localeField;
-    private EditText originPlaceField;
-    private EditText outBoundPartialDateField;
-
-    private AlertDialog.Builder flightRequestBuilder;
-    private View flightRequestView;
+public class FlightRequestDialog extends FlightDialog {
+    private final EditText countryField;
+    private final EditText currencyField;
+    private final EditText destinationPlaceField;
+    private final EditText localeField;
+    private final EditText originPlaceField;
+    private final EditText outBoundPartialDateField;
+    private final Button sendRequestBtn;
 
     public FlightRequestDialog(AppCompatActivity activity){
-        flightRequestBuilder = new AlertDialog.Builder(activity);
-        flightRequestView = activity.getLayoutInflater().inflate(
+        flightDialogView = activity.getLayoutInflater().inflate(
                 R.layout.dialog_flight_request,
                 activity.findViewById(android.R.id.content),
                 false
         );
+        countryField = flightDialogView.findViewById(R.id.Country);
+        currencyField = flightDialogView.findViewById(R.id.Currency);
+        destinationPlaceField = flightDialogView.findViewById(R.id.DestinationPlace);
+        localeField = flightDialogView.findViewById(R.id.Locale);
+        originPlaceField = flightDialogView.findViewById(R.id.OriginPlace);
+        outBoundPartialDateField = flightDialogView.findViewById(R.id.OutBoundPartialDate);
+        sendRequestBtn = flightDialogView.findViewById(R.id.SendRequestBtn);
 
-        countryField = flightRequestView.findViewById(R.id.Country);
-        currencyField = flightRequestView.findViewById(R.id.Currency);
-        destinationPlaceField = flightRequestView.findViewById(R.id.DestinationPlace);
-        localeField = flightRequestView.findViewById(R.id.Locale);
-        originPlaceField = flightRequestView.findViewById(R.id.OriginPlace);
-        outBoundPartialDateField = flightRequestView.findViewById(R.id.OutBoundPartialDate);
-        sendRequestBtn = flightRequestView.findViewById(R.id.SendRequestBtn);
-
-        flightRequestBuilder.setView(flightRequestView);
-        flightRequestBuilder.create();
+        flightAlertDialog = new AlertDialog.Builder(activity).setView(flightDialogView).create();
     }
 
     public Button getSendRequestBtn(){
         return sendRequestBtn;
-    }
-
-    public void showDialog(){
-        flightRequestBuilder.show();
     }
 
     public HashMap<String, String> getRequestParameters(){

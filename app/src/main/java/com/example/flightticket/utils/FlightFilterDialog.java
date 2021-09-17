@@ -1,6 +1,5 @@
 package com.example.flightticket.utils;
 
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -11,38 +10,29 @@ import com.example.flightticket.R;
 
 import java.util.HashMap;
 
-public class FlightFilterDialog {
-    private EditText fromPriceField;
-    private EditText toPriceField;
-    private EditText carrierField;
-    private Button applyFilterBtn;
-
-    private AlertDialog.Builder flightFilterBuilder;
-    private View flightFilterView;
+public class FlightFilterDialog extends FlightDialog {
+    private final EditText fromPriceField;
+    private final EditText toPriceField;
+    private final EditText carrierField;
+    private final Button applyFilterBtn;
 
     public FlightFilterDialog(AppCompatActivity activity){
-        flightFilterBuilder = new AlertDialog.Builder(activity);
-        flightFilterView = activity.getLayoutInflater().inflate(
+        flightDialogView = activity.getLayoutInflater().inflate(
                 R.layout.dialog_flight_filter,
                 activity.findViewById(android.R.id.content),
                 false
         );
 
-        fromPriceField = flightFilterView.findViewById(R.id.FromPrice);
-        toPriceField = flightFilterView.findViewById(R.id.ToPrice);
-        carrierField = flightFilterView.findViewById(R.id.Carrier);
-        applyFilterBtn = flightFilterView.findViewById(R.id.ApplyFiltersBtn);
+        fromPriceField = flightDialogView.findViewById(R.id.FromPrice);
+        toPriceField = flightDialogView.findViewById(R.id.ToPrice);
+        carrierField = flightDialogView.findViewById(R.id.Carrier);
+        applyFilterBtn = flightDialogView.findViewById(R.id.ApplyFiltersBtn);
 
-        flightFilterBuilder.setView(flightFilterView);
-        flightFilterBuilder.create();
+        flightAlertDialog = new AlertDialog.Builder(activity).setView(flightDialogView).create();
     }
 
     public Button getApplyFilterBtn(){
         return applyFilterBtn;
-    }
-
-    public void showDialog(){
-        flightFilterBuilder.show();
     }
 
     public HashMap<String, String> getFilterSettings(){

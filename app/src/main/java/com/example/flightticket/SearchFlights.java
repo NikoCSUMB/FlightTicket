@@ -28,6 +28,8 @@ public class SearchFlights extends AppCompatActivity {
     private Button sendRequestDialogBtn;
     private Button setFilterDialogBtn;
 
+    private FlightRequestDialog flightRequestDialog;
+    private FlightFilterDialog flightFilterDialog;
     private FlightsAdapter flightsAdapter;
     private RetrofitClient retrofitClient;
     private List<Flight> flights;
@@ -50,10 +52,9 @@ public class SearchFlights extends AppCompatActivity {
         });
 
         sendRequestDialogBtn.setOnClickListener(view -> {
-            FlightRequestDialog flightRequestDialog = new FlightRequestDialog(SearchFlights.this);
+            flightRequestDialog = new FlightRequestDialog(SearchFlights.this);
             flightRequestDialog.getSendRequestBtn().setOnClickListener(viewSendRequest -> {
                 HashMap<String, String> requestParams = flightRequestDialog.getRequestParameters();
-
                 retrofitClient.getFlightsCall(
                     requestParams.get("country"),
                     requestParams.get("currency"),
@@ -85,14 +86,16 @@ public class SearchFlights extends AppCompatActivity {
                         }
                     }
                 });
+                flightRequestDialog.hideDialog();
             });
             flightRequestDialog.showDialog();
         });
 
         setFilterDialogBtn.setOnClickListener(view -> {
-            FlightFilterDialog flightFilterDialog = new FlightFilterDialog(SearchFlights.this);
+            flightFilterDialog = new FlightFilterDialog(SearchFlights.this);
             flightFilterDialog.getApplyFilterBtn().setOnClickListener(viewFilter -> {
                 flightsAdapter.filterFlights(flightFilterDialog.getFilterSettings());
+                flightFilterDialog.hideDialog();
             });
             flightFilterDialog.showDialog();
         });

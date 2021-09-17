@@ -21,19 +21,12 @@ public class FlightsAdapter extends BaseAdapter {
     public static final String priceTemplate = "Price: %s%s";
     public static final String carrierTemplate = "Airline: %s";
     public static final String placeTemple = "Airport: %s\nCountry: %s";
-
-    private static final HashMap<String, FlightDataGetter> flightDataGetters = new HashMap<>() {{
-        put("minprice", Flight::getMinPrice);
-        put("carrier", Flight::getCarrier);
-        put("placedep", Flight::getPlaceDep);
-        put("placedist", Flight::getPlaceDist);
-        put("currency", Flight::getCurrency);
-    }};
-
-    private int flightLayout;
-    private Context context;
+    private static final String defaultFromPrice = "0";
+    private static final String defaultToPrice = String.valueOf(Integer.MAX_VALUE);
+    private final int flightLayout;
+    private final Context context;
+    private final List<Flight> initialFlights;
     private List<Flight> flights;
-    private List<Flight> initialFlights;
 
     public FlightsAdapter(Context context, int flightLayout, List<Flight> flights) {
         this.flightLayout = flightLayout;
@@ -90,8 +83,16 @@ public class FlightsAdapter extends BaseAdapter {
     }
 
     public void filterFlights(HashMap<String, String> filterSettings){
-        Integer fromPrice = Integer.parseInt(Objects.requireNonNull(filterSettings.get("fromPrice")));
-        Integer toPrice = Integer.parseInt(Objects.requireNonNull(filterSettings.get("toPrice")));
+        Integer fromPrice = Integer.parseInt(
+                Objects.requireNonNull(
+                        filterSettings.get("fromPrice")
+                ).isEmpty() ? defaultFromPrice : Objects.requireNonNull(filterSettings.get("fromPrice"))
+        );
+        Integer toPrice = Integer.parseInt(
+                Objects.requireNonNull(
+                        filterSettings.get("toPrice")
+                ).isEmpty() ? defaultToPrice : Objects.requireNonNull(filterSettings.get("toPrice"))
+        );
         String carrier = filterSettings.get("carrier");
         flights = initialFlights.stream()
                 .filter(
@@ -101,52 +102,4 @@ public class FlightsAdapter extends BaseAdapter {
                 ).collect(Collectors.toList());
         notifyDataSetChanged();
     }
-
-//    @SuppressWarnings("unchecked")
-//    @Override
-//    public Filter getFilter() {
-//        return new Filter() {
-//            @Override
-//            protected FilterResults performFiltering(CharSequence charSeqFilter) {
-//                FilterResults filterResults = new FilterResults();
-//                List<Flight> filteredFlights = new ArrayList<>();
-//                String strFilter = charSeqFilter.toString().toLowerCase();
-//                Map<String, String> filterSettings;
-//                try {
-//                    filterSettings = (HashMap<String, String>)
-//                        Arrays.stream(strFilter.split(","))
-//                        .map(s -> s.split(":"))
-//                        .collect(Collectors.toMap(key -> key[0], val -> val[1]));
-//                    Log.i("FilterSettings", String.valueOf(filterSettings));
-//                } catch (ArrayIndexOutOfBoundsException e){
-//                    Log.i("Filter", "Incorrect filter format");
-//                    filterResults.values = initialFlights;
-//                    filterResults.count = initialFlights.size();
-//                    return filterResults;
-//                }
-//
-//                filterSettings.forEach((key, value) -> {
-//                    Log.i("FilterSettingsIter", key + " | " + value);
-//                    Log.i("FilterDataGettersHasFunction?", String.valueOf(FlightsAdapter.flightDataGetters.containsKey(key)));
-//                    if (FlightsAdapter.flightDataGetters.containsKey(key)) {
-//                        filteredFlights.addAll(initialFlights.stream().filter(
-//                            flight -> value.equals(String.valueOf(
-//                                (Objects.requireNonNull(FlightsAdapter.flightDataGetters.get(key))).getData(flight))
-//                            )
-//                        ).collect(Collectors.toList()));
-//                    }
-//                });
-//                Log.i("FilterFilteredFlights", String.valueOf(filteredFlights));
-//                filterResults.values = filteredFlights;
-//                filterResults.count = filteredFlights.size();
-//
-//                return filterResults;
-//            }
-//            @Override
-//            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-//                flights = (List<Flight>) filterResults.values;
-//                notifyDataSetChanged();
-//            }
-//        };
-//    }
 }

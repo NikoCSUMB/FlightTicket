@@ -1,6 +1,5 @@
 package com.example.flightticket.utils;
 
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -9,29 +8,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.flightticket.DataClasses.Flight;
 import com.example.flightticket.R;
 
-public class FlightInfoDialog {
+public class FlightInfoDialog extends FlightDialog{
     private final TextView flightInfoRoute;
     private final TextView flightInfoPlaceDep;
     private final TextView flightInfoPlaceDist;
     private final TextView flightInfoCarrier;
     private final TextView flightInfoPrice;
 
-    private final AlertDialog.Builder flightInfoBuilder;
-    private final View flightInfoView;
-
     public FlightInfoDialog(AppCompatActivity activity, Flight flight){
-        flightInfoBuilder = new AlertDialog.Builder(activity);
-        flightInfoView = activity.getLayoutInflater().inflate(
+        flightDialogView = activity.getLayoutInflater().inflate(
                 R.layout.dialog_flight_info,
                 activity.findViewById(android.R.id.content),
                 false
         );
 
-        flightInfoRoute = flightInfoView.findViewById(R.id.FlightInfoRoute);
-        flightInfoPlaceDep = flightInfoView.findViewById(R.id.FlightInfoPlaceDep);
-        flightInfoPlaceDist = flightInfoView.findViewById(R.id.FlightInfoPlaceDist);
-        flightInfoCarrier = flightInfoView.findViewById(R.id.FlightInfoCarrier);
-        flightInfoPrice = flightInfoView.findViewById(R.id.FlightInfoPrice);
+        flightInfoRoute = flightDialogView.findViewById(R.id.FlightInfoRoute);
+        flightInfoPlaceDep = flightDialogView.findViewById(R.id.FlightInfoPlaceDep);
+        flightInfoPlaceDist = flightDialogView.findViewById(R.id.FlightInfoPlaceDist);
+        flightInfoCarrier = flightDialogView.findViewById(R.id.FlightInfoCarrier);
+        flightInfoPrice = flightDialogView.findViewById(R.id.FlightInfoPrice);
 
         flightInfoRoute.setText(String.format(
                 FlightsAdapter.routeTemplate,
@@ -58,12 +53,7 @@ public class FlightInfoDialog {
                 flight.getCurrency()
         ));
 
-        flightInfoBuilder.setView(flightInfoView);
-        flightInfoBuilder.create();
-    }
-
-    public void showDialog(){
-        flightInfoBuilder.show();
+        flightAlertDialog = new AlertDialog.Builder(activity).setView(flightDialogView).create();
     }
 
 }
