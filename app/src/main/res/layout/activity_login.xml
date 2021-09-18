@@ -62,15 +62,15 @@
 
             <Button
                 android:id="@+id/loginBtn"
-                android:layout_marginTop="70dp"
                 style="@style/Widget.AppCompat.Button.Borderless"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:backgroundTint="@color/colorAccent"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
-                android:backgroundTint="@color/colorAccent"
-                android:text="@string/login"
-                android:textColor="#ffffff"
-                android:textSize="20sp" />
+                android:layout_marginTop="70dp"
+                android:text="@string/login" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
