@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.flightticket.DataClasses.Flight;
 import com.example.flightticket.DataClasses.User;
 
 import java.util.List;
@@ -36,7 +37,5 @@ public interface UserDAO {
 
     @Query("SELECT * FROM " + UserDatabase.USER_TABLE + " WHERE username = :username")
     User getUserByUsername(String username);
-
-
 
 }

@@ -65,6 +65,10 @@ public class User {
         flights.add(flight);
     }
 
+    public void removeFlight(Flight flight) {
+        flights.remove(flight);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,4 +81,6 @@ public class User {
     public int hashCode() {
         return Objects.hash(userId, username, password, flights);
     }
+
+
 }
