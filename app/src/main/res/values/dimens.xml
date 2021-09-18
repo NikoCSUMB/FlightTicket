@@ -13,4 +13,5 @@
     <dimen name="textSizeBig">20sp</dimen>
     <dimen name="textSizeMiddle">15sp</dimen>
     <dimen name="welcomeTextFieldMarginBottom">120dp</dimen>
+    <dimen name="dialogPadding">40dp</dimen>
 </resources>

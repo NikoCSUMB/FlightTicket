@@ -8,4 +8,19 @@
     <string name="login">Login</string>
     <string name="username">Username</string>
     <string name="logoutButton">Logout</string>
+    <string name="sendRequestBtn">Search Flights</string>
+    <string name="apply_filter">Apply Filter</string>
+    <string name="destination">Destination</string>
+    <string name="min_price">Min Price</string>
+    <string name="max_price">Max Price</string>
+    <string name="carrier">Carrier</string>
+    <string name="search_flights">Search Flights</string>
+    <string name="filter_flights">Filter Flights</string>
+    <string name="origin_place">Origin Place</string>
+    <string name="destination_place">Destination Place</string>
+    <string name="country">Country</string>
+    <string name="out_bound_partial_date">Out Bound Partial Date</string>
+    <string name="currency">Currency</string>
+    <string name="locale">Locale</string>
+    <string name="save_flight">Save Flight</string>
 </resources>
