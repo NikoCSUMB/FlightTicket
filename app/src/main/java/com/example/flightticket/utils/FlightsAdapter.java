@@ -35,6 +35,10 @@ public class FlightsAdapter extends BaseAdapter {
         this.initialFlights = flights;
     }
 
+    public List<Flight> getFilteredFlights(){
+        return this.flights;
+    }
+
     @Override
     public int getCount() {
         return flights.size();
