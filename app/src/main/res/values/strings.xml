@@ -22,4 +22,5 @@
     <string name="out_bound_partial_date">Out Bound Partial Date</string>
     <string name="currency">Currency</string>
     <string name="locale">Locale</string>
+    <string name="save_flight">Save Flight</string>
 </resources>

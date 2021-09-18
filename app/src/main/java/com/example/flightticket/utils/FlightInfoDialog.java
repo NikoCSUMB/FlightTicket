@@ -1,5 +1,6 @@
 package com.example.flightticket.utils;
 
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -15,6 +16,8 @@ public class FlightInfoDialog extends FlightDialog{
     private final TextView flightInfoCarrier;
     private final TextView flightInfoPrice;
 
+    Button saveFlightButton;
+
     public FlightInfoDialog(AppCompatActivity activity, Flight flight){
         flightDialogView = activity.getLayoutInflater().inflate(
                 R.layout.dialog_flight_info,
@@ -27,6 +30,8 @@ public class FlightInfoDialog extends FlightDialog{
         flightInfoPlaceDist = flightDialogView.findViewById(R.id.FlightInfoPlaceDist);
         flightInfoCarrier = flightDialogView.findViewById(R.id.FlightInfoCarrier);
         flightInfoPrice = flightDialogView.findViewById(R.id.FlightInfoPrice);
+
+        saveFlightButton = flightDialogView.findViewById(R.id.SaveFlightBtn);
 
         flightInfoRoute.setText(String.format(
                 FlightsAdapter.routeTemplate,
@@ -54,6 +59,10 @@ public class FlightInfoDialog extends FlightDialog{
         ));
 
         flightAlertDialog = new AlertDialog.Builder(activity).setView(flightDialogView).create();
+    }
+
+    public Button getSaveFlightButton(){
+        return saveFlightButton;
     }
 
 }

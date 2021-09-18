@@ -61,6 +61,10 @@ public class User {
         this.flights = flights;
     }
 
+    public void insertFlight(Flight flight) {
+        flights.add(flight);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
