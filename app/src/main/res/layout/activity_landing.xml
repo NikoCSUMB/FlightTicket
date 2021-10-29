@@ -50,10 +50,12 @@
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
-                android:backgroundTint="@color/colorAccent"
+                android:layout_marginTop="70dp"
+                android:background="@color/colorAccent"
                 android:text="Login"
                 android:textColor="#ffffff"
                 android:textSize="20dp" />
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -72,13 +74,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <Button
                 android:id="@+id/signUpButton"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
-                android:backgroundTint="@color/colorAccent"
+                android:layout_marginTop="70dp"
+                android:background="@color/colorAccent"
                 android:text="Sign Up"
                 android:textColor="#ffffff"
                 android:textSize="20dp" />

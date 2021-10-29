@@ -1,43 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
+
     android:orientation="vertical"
-    tools:context=".SearchFlights">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/SendRequestDialogBtn"
-            android:text="@string/search_flights"
-            android:textSize="20sp"
+        <TextView
+            android:id="@+id/TitleView"
+            android:textSize="@dimen/textSizeBig"
+            android:layout_margin="10dp"
             android:textColor="#ffffff"
-            android:backgroundTint="@color/colorAccent"
+            android:text="@string/saved_flights"
             android:layout_alignParentStart="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/SetFilterDialogBtn"
-            android:text="@string/filter_flights"
-            android:textSize="20sp"
-            android:textColor="#ffffff"
-            android:backgroundTint="@color/colorAccent"
-            android:layout_alignParentEnd="true"
+            android:id="@+id/FilterFlightsBtn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/filter_flights"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/textSizeBig" />
+
     </RelativeLayout>
 
+
     <ListView
-        android:id="@+id/ListViewFlights"
-        android:fadingEdgeLength="100dp"
-        android:divider="@android:color/transparent"
-        android:layout_margin="@dimen/listMargin"
+        android:id="@+id/SavedFlightsView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
 </LinearLayout>

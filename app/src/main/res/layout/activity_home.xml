@@ -72,7 +72,7 @@
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
-                android:backgroundTint="@color/colorAccent"
+                android:background="@color/colorAccent"
                 android:text="Search Flights"
                 android:textColor="#ffffff"
                 android:textSize="20dp" />
@@ -100,7 +100,7 @@
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_centerInParent="true"
-                android:backgroundTint="@color/colorAccent"
+                android:background="@color/colorAccent"
                 android:text="Saved Flights"
                 android:textColor="#ffffff"
                 android:textSize="20dp" />
